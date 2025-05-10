@@ -1,0 +1,17 @@
+{
+  "name": "consulta",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "consulta": "file:",
+    "express": "^5.1.0"
+  }
+}

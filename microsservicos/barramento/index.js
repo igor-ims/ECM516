@@ -11,10 +11,13 @@ app.post('/eventos', async (req, res) => {
         1 - Pegar o evento
         2 - Enviar o evento para os microsserviços de lembretes
         3 - Enviar o evento para os microsserviços de observações
+        4 - Enviar o evento para os microsserviços de consulta
         4 - "Responder"
     */
 
     const evento = req.body;
+
+    console.log(evento)
 
     try {
         await axios.post('http://localhost:4000/eventos', evento)
@@ -28,6 +31,12 @@ app.post('/eventos', async (req, res) => {
     }
     catch (error) {
         console.log(`Erro ao enviar evento para o microsserviço de observações: ${error}`);
+    }
+    try {
+        await axios.post('http://localhost:6000/eventos', evento)
+    }
+    catch (error) {
+        console.log(`Erro ao enviar evento para o microsserviço de consulta: ${error}`);
     }
 
     res.end()
