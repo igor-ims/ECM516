@@ -38,6 +38,12 @@ app.post('/eventos', async (req, res) => {
     catch (error) {
         console.log(`Erro ao enviar evento para o microsserviço de consulta: ${error}`);
     }
+    try {
+        await axios.post('http://localhost:7000/eventos', evento)
+    }
+    catch (error) {
+        console.log(`Erro ao enviar evento para o microsserviço de classificação: ${error}`);
+    }
 
     res.end()
 })

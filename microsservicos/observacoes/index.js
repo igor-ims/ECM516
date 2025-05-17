@@ -51,6 +51,19 @@ const baseObservaçoes = {
     ],
 };
 
+const funcoes = {
+    ObservacaoClassificada: async (observacao) => {
+        const observacoes = baseObservaçoes[observacao.idLembrete]
+        const obsParaAtualizar = observacoes.find(obs => obs.id === observacao.id)
+        obsParaAtualizar.status = observacao.status
+        await axios.post("http://localhost:10000/eventos", {
+            tipo: "ObservacaoAtualizada",
+            dados: observacao,
+        });
+        res.status(201).json(observacoes);
+    }
+}
+
 // GET /lembretes/id/observacoes
 app.get("/lembretes/:idLembrete/observacoes", (req, res) => {
     const { idLembrete } = req.params;
@@ -63,13 +76,23 @@ app.post("/lembretes/:idLembrete/observacoes", (req, res) => {
     const idObservacao = uuidv4(); // Gera um novo ID único
     const { idLembrete } = req.params;
     const { texto } = req.body;
-    const observacao = { id: idObservacao, texto, idLembrete };
+    const observacao = { id: idObservacao, texto, idLembrete, status: "aguardando" };
 
     const observacoes = baseObservaçoes[idLembrete] || [];
     observacoes.push(observacao);
     baseObservaçoes[idLembrete] = observacoes; // Atualiza a lista de observações para o lembrete
 
     res.status(201).json(observacoes);
+});
+
+app.post("/eventos", async (req, res) => {
+    try {
+        const evento = req.body;
+        console.log(evento);
+        await funcoes[evento.tipo](evento.dados);
+    } finally {
+        res.end();
+    }
 });
 
 app.listen(PORT, () => {
