@@ -6,6 +6,8 @@ app.use(express.json()); // Middleware para converter o body em JSON
 
 const PORT = 10000
 
+const eventos = []
+
 app.post('/eventos', async (req, res) => {
     /*
         1 - Pegar o evento
@@ -18,6 +20,8 @@ app.post('/eventos', async (req, res) => {
     const evento = req.body;
 
     console.log(evento)
+
+    eventos.push(evento)
 
     try {
         await axios.post('http://localhost:4000/eventos', evento)
@@ -48,7 +52,11 @@ app.post('/eventos', async (req, res) => {
     res.end()
 })
 
-app.listen(PORT, () => {
+app.get('/eventos', (req, res) => {
+    res.json(eventos)
+})
+
+app.listen(PORT, async () => {
     console.log(`\x1b[36mBarramento de Eventos: Servidor rodando na porta ${PORT}\x1b[0m`);
 });
 

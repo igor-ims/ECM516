@@ -72,15 +72,24 @@ app.get("/lembretes/:idLembrete/observacoes", (req, res) => {
 });
 
 // POST /lembretes/id/observacoes
-app.post("/lembretes/:idLembrete/observacoes", (req, res) => {
+app.post("/lembretes/:idLembrete/observacoes", async (req, res) => {
     const idObservacao = uuidv4(); // Gera um novo ID único
     const { idLembrete } = req.params;
     const { texto } = req.body;
-    const observacao = { id: idObservacao, texto, idLembrete, status: "aguardando" };
+    const observacao = { 
+        id: idObservacao, 
+        texto, idLembrete, 
+        status: "aguardando" 
+    };
 
     const observacoes = baseObservaçoes[idLembrete] || [];
     observacoes.push(observacao);
     baseObservaçoes[idLembrete] = observacoes; // Atualiza a lista de observações para o lembrete
+
+    await axios.post('http://localhost:10000/eventos', {
+        tipo: "ObservacaoCriada",
+        dados: observacao
+    })
 
     res.status(201).json(observacoes);
 });
@@ -90,7 +99,11 @@ app.post("/eventos", async (req, res) => {
         const evento = req.body;
         console.log(evento);
         await funcoes[evento.tipo](evento.dados);
-    } finally {
+    } 
+    catch (e){
+        console.error(`Erro ao processar o evento: ${e}`);
+    }
+    finally {
         res.end();
     }
 });

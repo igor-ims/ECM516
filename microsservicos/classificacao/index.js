@@ -12,6 +12,8 @@ const funcoes = {
             dados: observacao
         });
     }
+
+    
 }
 
 app.post('/eventos', async (req, res) => {
@@ -20,9 +22,14 @@ app.post('/eventos', async (req, res) => {
         console.log(evento);
         await funcoes[evento.tipo](evento.dados);
     }
+    catch (error) {
+        console.error(`Erro ao processar o evento: ${error}`);
+        res.status(500).send('Erro ao processar o evento');
+        return;
+    }
     finally{
         res.end();
-    }    
+    }
 })
 
 app.listen(PORT, () => {
