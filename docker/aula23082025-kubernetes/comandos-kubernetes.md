@@ -298,3 +298,198 @@ ecm516-meu-primeiro-deployment   1/1     1            1           7d
 
 ## PS C:\Users\igori\Documents\ECM516> kubectl delete deployment -l app=ecm516-meu-primeiro-deployment
 deployment.apps "ecm516-meu-primeiro-deployment" deleted
+
+## PS C:\Users\igori\Documents\ECM516> kubectl scale deployments/ecm516-meu-primeiro-deployment --replicas=4
+deployment.apps/ecm516-meu-primeiro-deployment scaled
+
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods
+NAME                                              READY   STATUS    RESTARTS   AGE
+ecm516-meu-primeiro-deployment-7f5bd5c886-9gjs9   1/1     Running   0          30m
+ecm516-meu-primeiro-deployment-7f5bd5c886-j8pp7   1/1     Running   0          11s
+ecm516-meu-primeiro-deployment-7f5bd5c886-vtzk5   1/1     Running   0          11s
+ecm516-meu-primeiro-deployment-7f5bd5c886-xpsm4   1/1     Running   0          11s
+
+## PS C:\Users\igori\Documents\ECM516> kubectl scale deployments/ecm516-meu-primeiro-deployment --replicas=32
+deployment.apps/ecm516-meu-primeiro-deployment scaled
+
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods
+NAME                                              READY   STATUS    RESTARTS   AGE
+ecm516-meu-primeiro-deployment-7f5bd5c886-2qgzz   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-4jxbh   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-626wd   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-7gj57   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-9gjs9   1/1     Running   0          30m
+ecm516-meu-primeiro-deployment-7f5bd5c886-9sznx   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-cwd5x   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-gtbrv   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-h44gv   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-hhvvp   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-hqrsn   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-hv9pj   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-j8pp7   1/1     Running   0          29s
+ecm516-meu-primeiro-deployment-7f5bd5c886-jh2f2   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-l5pks   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-lv8bc   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-m2qht   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-m64g6   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-mnpr5   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-nfkbr   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-pm6kv   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-qwlzl   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-tzxmk   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-vtzk5   1/1     Running   0          29s
+ecm516-meu-primeiro-deployment-7f5bd5c886-w2wh6   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-wflxp   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-x7xcb   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-xlnq7   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-xpsm4   1/1     Running   0          29s
+ecm516-meu-primeiro-deployment-7f5bd5c886-xpwmf   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-xqhhl   1/1     Running   0          14s
+ecm516-meu-primeiro-deployment-7f5bd5c886-zbl9b   1/1     Running   0          14s
+
+## PS C:\Users\igori\Documents\ECM516> kubectl get deployments
+NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
+ecm516-meu-primeiro-deployment   2/2     2            2           40m
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods
+NAME                                              READY   STATUS    RESTARTS   AGE
+ecm516-meu-primeiro-deployment-7f5bd5c886-9gjs9   1/1     Running   0          40m
+ecm516-meu-primeiro-deployment-7f5bd5c886-hqrsn   1/1     Running   0          10m
+
+## PS C:\Users\igori\Documents\ECM516> kubectl describe pods
+Name:             ecm516-meu-primeiro-deployment-7f5bd5c886-9gjs9
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             docker-desktop/192.168.65.3
+Start Time:       Sat, 30 Aug 2025 08:16:30 -0300
+Labels:           app=ecm516-meu-primeiro-deployment
+                  pod-template-hash=7f5bd5c886
+Annotations:      <none>
+Status:           Running
+IP:               10.1.0.21
+IPs:
+  IP:           10.1.0.21
+Controlled By:  ReplicaSet/ecm516-meu-primeiro-deployment-7f5bd5c886
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://7ce7895f7519b921cab03e0e847a56a3549b35c0ae3f0a5cc98031e67bb0a6e7
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v1
+    Image ID:       docker-pullable://gcr.io/google-samples/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af   
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sat, 30 Aug 2025 08:16:30 -0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-vbt6l (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       True
+  ContainersReady             True
+  PodScheduled                True
+Volumes:
+  kube-api-access-vbt6l:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  40m   default-scheduler  Successfully assigned default/ecm516-meu-primeiro-deployment-7f5bd5c886-9gjs9 to docker-desktop
+  Normal  Pulled     40m   kubelet            Container image "gcr.io/google-samples/kubernetes-bootcamp:v1" already present on machine
+  Normal  Created    40m   kubelet            Created container: kubernetes-bootcamp
+  Normal  Started    40m   kubelet            Started container kubernetes-bootcamp
+
+
+Name:             ecm516-meu-primeiro-deployment-7f5bd5c886-hqrsn
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             docker-desktop/192.168.65.3
+Start Time:       Sat, 30 Aug 2025 08:46:50 -0300
+Labels:           app=ecm516-meu-primeiro-deployment
+                  pod-template-hash=7f5bd5c886
+Annotations:      <none>
+Status:           Running
+IP:               10.1.0.41
+IPs:
+  IP:           10.1.0.41
+Controlled By:  ReplicaSet/ecm516-meu-primeiro-deployment-7f5bd5c886
+Containers:
+  kubernetes-bootcamp:
+    Container ID:   docker://b6c36d1cc123be184fad19d73d9768bdc92af69feaed6e532461c0c806464ad3
+    Image:          gcr.io/google-samples/kubernetes-bootcamp:v1
+    Image ID:       docker-pullable://gcr.io/google-samples/kubernetes-bootcamp@sha256:0d6b8ee63bb57c5f5b6156f446b3bc3b3c143d233037f3a2f00e279c8fcc64af   
+    Port:           <none>
+    Host Port:      <none>
+    State:          Running
+      Started:      Sat, 30 Aug 2025 08:46:53 -0300
+    Ready:          True
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-8vzp2 (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       True
+  ContainersReady             True
+  PodScheduled                True
+Volumes:
+  kube-api-access-8vzp2:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    ConfigMapOptional:       <nil>
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type    Reason     Age   From               Message
+  ----    ------     ----  ----               -------
+  Normal  Scheduled  10m   default-scheduler  Successfully assigned default/ecm516-meu-primeiro-deployment-7f5bd5c886-hqrsn to docker-desktop
+  Normal  Pulled     10m   kubelet            Container image "gcr.io/google-samples/kubernetes-bootcamp:v1" already present on machine
+  Normal  Created    10m   kubelet            Created container: kubernetes-bootcamp
+  Normal  Started    10m   kubelet            Started container kubernetes-bootcamp
+  
+## PS C:\Users\igori\Documents\ECM516> kubectl set image deployments ecm516-meu-primeiro-deployment kubernetes-bootcamp=jocatalin/kubernetes-bootcamp:v2
+deployment.apps/ecm516-meu-primeiro-deployment image updated
+
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods
+NAME                                              READY   STATUS        RESTARTS   AGE
+ecm516-meu-primeiro-deployment-7c8bc65768-g7kw9   1/1     Running       0          6s
+ecm516-meu-primeiro-deployment-7c8bc65768-zbx27   1/1     Running       0          1s
+ecm516-meu-primeiro-deployment-7f5bd5c886-9gjs9   1/1     Terminating   0          43m
+ecm516-meu-primeiro-deployment-7f5bd5c886-hqrsn   1/1     Terminating   0          13m
+
+## PS C:\Users\igori\Documents\ECM516> kubectl rollout status deployments/ecm516-meu-primeiro-deployment
+deployment "ecm516-meu-primeiro-deployment" successfully rolled out
+
+## PS C:\Users\igori\Documents\ECM516> kubectl set image deployments ecm516-meu-primeiro-deployment kubernetes-bootcamp=gcr.io/google-samples/kubernetes-bootcamp:v10
+deployment.apps/ecm516-meu-primeiro-deployment image updated
+
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods                                                                                                      
+NAME                                              READY   STATUS              RESTARTS   AGE
+ecm516-meu-primeiro-deployment-7687d78b64-r9lfv   0/1     ContainerCreating   0          3s
+ecm516-meu-primeiro-deployment-7c8bc65768-g7kw9   1/1     Running             0          3m11s
+ecm516-meu-primeiro-deployment-7c8bc65768-zbx27   1/1     Running             0          3m6s
+
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods
+NAME                                              READY   STATUS         RESTARTS   AGE
+ecm516-meu-primeiro-deployment-7687d78b64-r9lfv   0/1     ErrImagePull   0          8s
+ecm516-meu-primeiro-deployment-7c8bc65768-g7kw9   1/1     Running        0          3m16s
+ecm516-meu-primeiro-deployment-7c8bc65768-zbx27   1/1     Running        0          3m11s
+
