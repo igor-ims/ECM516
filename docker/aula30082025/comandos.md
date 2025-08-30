@@ -1,6 +1,6 @@
-PS C:\Users\igori\Documents\ECM516> cd .\microsservicos\
-PS C:\Users\igori\Documents\ECM516\microsservicos> cd .\lembretes\
-PS C:\Users\igori\Documents\ECM516\microsservicos\lembretes> docker build -t igorims/ecm516-lembretes:0.0.1 .
+## PS C:\Users\igori\Documents\ECM516> cd .\microsservicos\
+## PS C:\Users\igori\Documents\ECM516\microsservicos> cd .\lembretes\
+## PS C:\Users\igori\Documents\ECM516\microsservicos\lembretes> docker build -t igorims/ecm516-lembretes:0.0.1 .
 [+] Building 30.1s (11/11) FINISHED                                                                                                  docker:desktop-linux
  => [internal] load build definition from Dockerfile                                                                                                 0.1s
  => => transferring dockerfile: 174B                                                                                                                 0.0s
@@ -35,14 +35,14 @@ PS C:\Users\igori\Documents\ECM516\microsservicos\lembretes> docker build -t igo
 What's next:
     View a summary of image vulnerabilities and recommendations → docker scout quickview 
 
-PS C:\Users\igori\Documents\ECM516> kubectl get pods -l versao=v1
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods -l versao=v1
 NAME                                              READY   STATUS    RESTARTS      AGE
 ecm516-meu-primeiro-deployment-7f5bd5c886-db5d8   1/1     Running   1 (59m ago)   7d
-PS C:\Users\igori\Documents\ECM516> kubectl get services
+## PS C:\Users\igori\Documents\ECM516> kubectl get services
 NAME                             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)          AGE
 ecm516-meu-primeiro-deployment   NodePort    10.98.231.116   <none>        8080:32162/TCP   23m
 kubernetes                       ClusterIP   10.96.0.1       <none>        443/TCP          7d
-PS C:\Users\igori\Documents\ECM516> kubectl describe services
+## PS C:\Users\igori\Documents\ECM516> kubectl describe services
 Name:                     ecm516-meu-primeiro-deployment
 Namespace:                default
 Labels:                   app=ecm516-meu-primeiro-deployment
@@ -80,22 +80,22 @@ Endpoints:                192.168.65.3:6443
 Session Affinity:         None
 Internal Traffic Policy:  Cluster
 Events:                   <none>
-PS C:\Users\igori\Documents\ECM516> kubectl delete pod $env:POD_NAME
+## PS C:\Users\igori\Documents\ECM516> kubectl delete pod $env:POD_NAME
 pod "ecm516-meu-primeiro-deployment-7f5bd5c886-db5d8" deleted
-PS C:\Users\igori\Documents\ECM516> kubectl get pods
+## PS C:\Users\igori\Documents\ECM516> kubectl get pods
 NAME                                              READY   STATUS    RESTARTS   AGE
 ecm516-meu-primeiro-deployment-7f5bd5c886-p8cn2   1/1     Running   0          66s
-PS C:\Users\igori\Documents\ECM516> kubectl delete service -l app=ecm516-meu-primeiro-deployment
+## PS C:\Users\igori\Documents\ECM516> kubectl delete service -l app=ecm516-meu-primeiro-deployment
 service "ecm516-meu-primeiro-deployment" deleted
-PS C:\Users\igori\Documents\ECM516> kubectl get services
+## PS C:\Users\igori\Documents\ECM516> kubectl get services
 NAME         TYPE        CLUSTER-IP   EXTERNAL-IP   PORT(S)   AGE
 kubernetes   ClusterIP   10.96.0.1    <none>        443/TCP   7d
-PS C:\Users\igori\Documents\ECM516> kubectl get deployments
+## PS C:\Users\igori\Documents\ECM516> kubectl get deployments
 NAME                             READY   UP-TO-DATE   AVAILABLE   AGE
 ecm516-meu-primeiro-deployment   1/1     1            1           7d
-PS C:\Users\igori\Documents\ECM516> kubectl delete deployment -l app=ecm516-meu-primeiro-deployment
+## PS C:\Users\igori\Documents\ECM516> kubectl delete deployment -l app=ecm516-meu-primeiro-deployment
 deployment.apps "ecm516-meu-primeiro-deployment" deleted
-PS C:\Users\igori\Documents\ECM516> get deployments
+## PS C:\Users\igori\Documents\ECM516> get deployments
 get : O termo 'get' não é reconhecido como nome de cmdlet, função, arquivo de script ou programa operável. Verifique a grafia do nome ou, se um caminho 
 tiver sido incluído, veja se o caminho está correto e tente novamente.
 No linha:1 caractere:1
@@ -104,23 +104,23 @@ No linha:1 caractere:1
     + CategoryInfo          : ObjectNotFound: (get:String) [], CommandNotFoundException
     + FullyQualifiedErrorId : CommandNotFoundException
 
-PS C:\Users\igori\Documents\ECM516> kubectl get deployments
+## PS C:\Users\igori\Documents\ECM516> kubectl get deployments
 No resources found in default namespace.
-PS C:\Users\igori\Documents\ECM516> 
+## PS C:\Users\igori\Documents\ECM516> 
  *  Histórico restaurado 
 
-PS C:\Users\igori\Documents\ECM516> cd .\microsservicos\implantacao\k8s\
+## PS C:\Users\igori\Documents\ECM516> cd .\microsservicos\implantacao\k8s\
 
-PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl apply -f lembretes.yaml
+## PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl apply -f lembretes.yaml
 pod/ecm516-lembretes created
-PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl get pods
+## PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl get pods
 NAME                                              READY   STATUS             RESTARTS   AGE
 ecm516-lembretes                                  1/1     Running            0          2m10s
 ecm516-meu-primeiro-deployment-7687d78b64-r9lfv   0/1     ImagePullBackOff   0          25m
 ecm516-meu-primeiro-deployment-7c8bc65768-g7kw9   1/1     Running            0          28m
 ecm516-meu-primeiro-deployment-7c8bc65768-zbx27   1/1     Running            0          28m
 
-PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl apply -f lembretes.yaml
+## PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl apply -f lembretes.yaml
 The Pod "ecm516-lembretes" is invalid: spec: Forbidden: pod updates may not change fields other than `spec.containers[*].image`,`spec.initContainers[*].image`,`spec.activeDeadlineSeconds`,`spec.tolerations` (only additions to existing tolerations),`spec.terminationGracePeriodSeconds` (allow it to be set to 1 if it was previously negative)
   core.PodSpec{
         Volumes:        {{Name: "kube-api-access-qv7xr", VolumeSource: {Projected: &{Sources: {{ServiceAccountToken: &{ExpirationSeconds: 3607, Path: "token"}}, {ConfigMap: &{LocalObjectReference: {Name: "kube-root-ca.crt"}, Items: {{Key: "ca.crt", Path: "ca.crt"}}}}, {DownwardAPI: &{Items: {{Path: "namespace", FieldRef: &{APIVersion: "v1", FieldPath: "metadata.namespace"}}}}}}, DefaultMode: &420}}}},
@@ -149,8 +149,8 @@ The Pod "ecm516-lembretes" is invalid: spec: Forbidden: pod updates may not chan
         ... // 29 identical fields
   }
 
-PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl delete -f lembretes.yaml
+## PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl delete -f lembretes.yaml
 pod "ecm516-lembretes" deleted
 
-PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl apply -f lembretes.yaml 
+## PS C:\Users\igori\Documents\ECM516\microsservicos\implantacao\k8s> kubectl apply -f lembretes.yaml 
 pod/ecm516-lembretes created
