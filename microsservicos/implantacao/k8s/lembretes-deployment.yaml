@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ecm516-lembretes-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: lembretes
+  template:
+    metadata:
+      labels:
+        app: lembretes
+    spec:
+      containers:
+      - name: lembretes
+        image: igorims/ecm516-lembretes:0.0.2
+        resources:
+          limits:
+            memory: 256Mi
+            cpu: "1"
+          requests:
+            memory: 256Mi
+            cpu: "1"
+        ports:
+        - containerPort: 8080
