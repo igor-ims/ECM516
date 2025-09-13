@@ -24,12 +24,13 @@ app.post('/eventos', async (req, res) => {
     eventos.push(evento)
 
     try {
-        await axios.post('http://localhost:4000/eventos', evento)
+        await axios.post('http://ecm516-lembretes-clusterip-service:4000/eventos', evento)
     }
     catch (error) {
         console.log(`Erro ao enviar evento para o microsserviço de lembretes: ${error}`);
     }
 
+    /*
     try {
         await axios.post('http://localhost:5000/eventos', evento)
     }
@@ -48,6 +49,7 @@ app.post('/eventos', async (req, res) => {
     catch (error) {
         console.log(`Erro ao enviar evento para o microsserviço de classificação: ${error}`);
     }
+    */
 
     res.end()
 })
